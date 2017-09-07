@@ -51,8 +51,8 @@ class Prompt:
         self.default = default
 
     def __call__(self, val):
-        default_str = '' if self.default is None else f'({self.default}) '
-        help_str = '' if self.help is None else f': {self.help}'
+        default_str = '' if self.default is None else r'({self.default}) '
+        help_str = '' if self.help is None else r': {self.help}'
 
         try:
             # If the user provided no value for this argument, prompt them for it
@@ -69,5 +69,5 @@ class Prompt:
             return self.type(val)
 
         except BaseException:
-            print(f'Argument "{self.name}" was given a value not of type {self.type}', file=sys.stderr)
+            print(r'Argument "{self.name}" was given a value not of type {self.type}', file=sys.stderr)
             exit(1)
